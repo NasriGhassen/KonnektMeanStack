@@ -1,0 +1,173 @@
+<style>
+    .tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+    /* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+    #car{
+        background-image: url("../app/images/car.png"); 
+        margin:auto;
+        width:42em;
+    }
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+    .status{
+        font-size: 20px;
+    }
+    .problem{
+        color:black;
+        position: absolute;
+        margin-top: -20 em;
+    }
+</style>
+      <div ng-controller="updatecarController"> 
+<div>
+       <div class='navbar navbar-default navbar-static-top'>
+      <div class='container-fluid'>
+        <div class="navbar-header">
+          <button id="searchs" onclick="searchPath()" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+             <div style="display:inline-block; position:absolute; margin-left:550px;margin-top:7px;width:300px;"><input class="form-control" placeholder="Search" >
+             <span style="display:inline-block; position:absolute; margin-left:310px;margin-top:-30px;"><button>O</button></span>
+             </div>
+          <a class='navbar-brand' href='#/events'>Agorize Allianz Challenge</a>
+        </div>
+        <div class="navbar-collapse collapse">
+                  
+          <ul class="nav navbar-nav navbar-right">
+            <li class='active'><a href="#/profile">Profil</a></li>
+            <li><a href="#/login">Disconnect</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+   </div>
+     <div class="container">
+      <div class="row">
+      
+        <div  >
+   
+   
+          <div class="panel panel-info " style="float:left; width:70em;">
+            <div class="panel-heading">
+              <h3 class="panel-title" >{{user.login}}</h3>
+                <img alt="User Pic" src="../app/images/user.png" class="img-circle img-responsive" style="height:105px; width:105px; float:right; position:absolute; margin-left:60em;">
+            </div>
+            
+    <div class="panel panel-info " style="float:center;">
+        <frameset>
+        <legend>Update Car information</legend>
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Registration code of your car</td>
+                        <td><input ng-model="user.car.registration_number" type="text" name="reg" id="reg"/></td>
+                      </tr>
+                      <tr>
+                        <td> Buying date:</td>
+                        <td><input ng-model="user.car.buying_date" type="text" name="BD" id="BD"/></td>
+                      </tr>
+                      <tr>
+                        <td>Fabrication of Birth</td>
+                        <td><input ng-model="user.car.fabrication_birth" type="text" name="FB" id="FB" /></td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                        <td>Power:</td>
+                        <td><input ng-model="user.car.power" type="text" name="Pwr" id="Pwr" /></td>
+                      </tr>
+                   
+                     
+                                                
+                    </tbody>
+                  </table>
+                  </frameset>
+                  <input ng-click="update()" type="button" class="btn btn-primary" value="Save Changes"/>
+                  
+                </div>
+          </div>
+            
+            
+        </div>
+      </div>
+    </div>
+	</div>

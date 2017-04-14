@@ -1,0 +1,87 @@
+
+<div ng-controller="eventsController">
+    
+   <div>
+       <div class='navbar navbar-default navbar-static-top'>
+      <div class='container-fluid'>
+        <div class="navbar-header">
+          <button id="searchs" onclick="searchPath()" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+             <div style="display:inline-block; position:absolute; margin-left:550px;margin-top:7px;width:300px;"><input class="form-control" placeholder="Search" >
+             <span style="display:inline-block; position:absolute; margin-left:310px;margin-top:-30px;"><button>O</button></span>
+             </div>
+          <a class='navbar-brand' href='#/events'>Agorize Allianz Challenge</a>
+        </div>
+        <div class="navbar-collapse collapse">
+                  
+          <ul class="nav navbar-nav navbar-right">
+            <li class='active'><a href="#/profile">Profil</a></li>
+            <li><a href="#/login">Disconnect</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+   </div>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-4'>
+          <p>Choose what information you want to view on the map</p>
+          <div class='well'>
+
+  
+            <div class='row'>
+              <div class='col-md-12'>
+                <input id="lastaccidents" ng-click="searchAccidents()" type="checkbox">  View Accidents Density<br>
+				<hr>
+                <input id="latestpath" ng-click="searchPath()" type="checkbox" onclick="searchPath()" >  View Latest Path<br>
+				<hr>
+                <input id="laststopsign" type="checkbox"  ng-click="searchStopSigns()">  View Non-respected Stop Sign<br>
+				<hr>
+                <input id="lastspeed" type="checkbox" ng-click="searchSpeed()">  View Non-respected Speed Limit<br>
+				
+              </div>
+            </div>
+            <br />
+   
+            <a class='btn btn-default' id='reset' ng-click="reset()">
+              <i class='glyphicon glyphicon-repeat'></i>
+              Reset
+            </a>
+          </div>
+          <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
+        </div>
+        <div class='col-md-8'>
+          <noscript>
+            <div class='alert alert-info'>
+              <h4>Your JavaScript is disabled</h4>
+              <p>Please enable JavaScript to view the map.</p>
+            </div>
+          </noscript>
+          <style>
+             #map_canvas {
+        height: 100%;
+      }</style>
+   
+            
+           <div id="map_canvas">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                  geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
+            <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius="c.radius"
+                visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
+        
+         <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
+        </ui-gmap-markers>
+        
+          <ui-gmap-markers models="randomMarkers2" coords="'self'" icon= "icon">
+        </ui-gmap-markers>
+    </ui-gmap-google-map>
+</div>
+      </div>
+    </div>
+
+</div>
+    
